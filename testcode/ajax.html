@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<style>
+		
+		
+	</style>
+</head>
+
+<body>
+
+	<div style="width: 50%;margin: auto">
+		<table border="2" rule="all">
+			<thead>
+				<tr>
+					<th style="width: 5%;">ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th style="width: 150px;text-align: center;">Action</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<script>
+		$(document).ready(function () {
+			show();
+		})
+		function show() {
+			$.ajax({
+				type: "GET",
+				url: "http://www.api-ams.me/v1/api/articles?page=1&limit=5",
+				dataType: "JSON",
+				success: function (response) {
+					let data = response['DATA'];
+					console.log(data);
+					let j = 1;
+					for (let char of data) {
+						// <td>${char.ID}</td>
+						$('#tbody').append(`<tr>
+						<td>${j++}</td>							
+						<td>${char.TITLE}</td>
+						<td>${char.DESCRIPTION}</td>
+						<td><button>Update</button> <button id="del" >Delete</button></td>
+						</tr>`);
+					}
+
+				}
+			});
+		}
+		
+	</script>
+
+</body>
+
+</html>

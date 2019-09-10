@@ -1,0 +1,10 @@
+{
+    "year": 2019,
+    "name": "Khode",
+    "khmer": true,
+    "code": ["html", "css", "javascript"],
+    "location": {
+        "province": "Siem Reap",
+        "country": "Cambodia"
+    }
+}
