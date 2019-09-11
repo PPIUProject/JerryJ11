@@ -9,14 +9,25 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
-		
+		.div1{
+			margin: auto;
+			width: 200px;
+			height: 50px;
+			padding: 20px 20px;
+		}
 		
 	</style>
 </head>
 
 <body>
-
-	<div style="width: 50%;margin: auto">
+	
+	<div class="div1">
+		Title : <input type="text" id="title"​><br><br>
+		Description : <input type="text" id="des"><br><br>
+		<button id="btn-add">ADD</button>
+	</div>
+	
+	<div style="width: 50%;margin: 100px auto">
 		<table border="2" rule="all">
 			<thead>
 				<tr>
@@ -38,6 +49,26 @@
 		$(document).ready(function () {
 			show();
 		})
+
+		$("#btn-add").click(function(){
+			let title=$("#title").val();
+			let des=$("#des").val();
+			
+			$.ajax({
+				type: "POST",
+				url: "url",
+				data: "data",
+				dataType: "dataType",
+				success: function (response) {
+					
+				}
+			});
+
+		})
+
+
+
+
 		function show() {
 			$.ajax({
 				type: "GET",
