@@ -9,26 +9,25 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
-		.div1{
+		.div1 {
 			margin: auto;
 			width: 200px;
 			height: 50px;
 			padding: 20px 20px;
 		}
-		
 	</style>
 </head>
 
 <body>
-	
+
 	<div class="div1">
-		Title : <input type="text" id="title"​><br><br>
+		Title : <input type="text" id="title" ​><br><br>
 		Description : <input type="text" id="des"><br><br>
 		<button id="btn-add">ADD</button>
 	</div>
-	
+
 	<div style="width: 50%;margin: 100px auto">
-		<table border="2" rule="all" >
+		<table border="2" rule="all">
 			<thead>
 				<tr>
 					<th style="width: 5%;">ID</th>
@@ -48,21 +47,19 @@
 	<script>
 		$(document).ready(function () {
 			show();
-			
-		
 		})
-		$("#btn-add").click(function(){
-			let title=$("#title").val();
-			let des=$("#des").val();
-			
+		$("#btn-add").click(function () {
+			let title = $("#title").val();
+			let des = $("#des").val();
+
 			$.ajax({
 				type: "POST",
 				url: "http://www.api-ams.me/v1/api/articles",
 				data: JSON.stringify({
-					TITLE:title,
-					DESCRIPTION:des
+					TITLE: title,
+					DESCRIPTION: des
 				}),
-				contentType:'application/json',
+				contentType: 'application/json',
 				dataType: "json",
 				success: function (response) {
 					// $("#tbody").empty();
@@ -71,7 +68,20 @@
 			});
 
 		})
-		
+		//delete
+		$(document).on('click','.del',function(e){
+				// console.log(e.target.id)
+				let del_id=e.target.id;
+				$.ajax({
+					type: "DELETE",
+					url: "http://www.api-ams.me/v1/api/articles/"+del_id,
+					success: function (response) {
+						// $("#tbody").empty();
+						show();
+					}
+				});
+
+			})
 
 
 		function show() {
@@ -90,15 +100,15 @@
 						<td>${j++}</td>							
 						<td>${char.TITLE}</td>
 						<td>${char.DESCRIPTION}</td>
-						<td><button>Update</button> <button id="del" >Delete</button></td>
+						<td><button>Update</button> <button class="del" id="${char.ID}" >Delete</button></td>
 						</tr>`);
 					}
 
 				}
 			});
-			
 		}
-		
+
+			
 	</script>
 
 </body>
