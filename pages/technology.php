@@ -1,82 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="../img/xD.ico" type="image/x-icon">
-    <title>Technology</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/jquery-3.4.0.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Koulen|Battambang" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Anton|Nunito+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="../css/animate.css">
-</head>
-
-<body>
-    <!-- Fixed navbar -->
-    <div class="container-fluid ">
-        <div class="row">
-            <nav class="navbar navbar-inverse navbar-fixed-top" style="background: black;">
-                <div class="container">
-                    <div class="row">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#"><img src="../img/logo.png" class="img-responsive" alt="Image" style="transform: translateY(-9.5px);border-radius: 5px;"></a>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav" style="font-family: Koulen;font-size: 20px;">
-                                <li ><a href="../index.html">ព័ត៌មាន</a></li>
-                                <li class="active"><a href="technology.html">បច្ចេកវិទ្យា</a></li>
-                                <li><a href="#">ជីវិតនិងសង្គម</a></li>
-                                <li><a href="#">កីឡា</a></li>
-                                <li><a href="#">សុខភាព</a></li>
-                                <li><a href="#">ប្លែកៗ</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right" style="font-size: 20px;">
-                                <li><a href="../navbar/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="../navbar-static-top/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li class="active"><a href="./"><i class="fa fa-instagram" aria-hidden="true"></i> <span class="sr-only">(current)</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--/.nav-collapse -->
-                </div>
-            </nav>
-        </div>
-    </div>
-
-    <div class="hidden-xs col-sm-12 col-md-12 col-lg-12 ">
-        <div class="row">
-            <div class="container-fluid" style="background: #e6e6e6;height: 326px;margin-top: 20px;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="row bv">
-                                <img class="badss gg" src="../img/3.gif" alt="Image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     
 	<div class="container bm b2">
 		<div class=row>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 m" style="height: 700px;">
 				<div class="row1">
+					<?php
+						$sql="select id from tbl_cat where en_name='".$_GET['cate']."'";
+						$result=$conn->query($sql);
+						$row = $result->fetch_assoc();
+						$cate_id=$row['id'];
+						var_dump($cate_id);
+
+						$result1=$conn->query("SELECT * FROM `tbl_art` WHERE cate_id=".$cate_id);
+						$row1 = $result1->fetch_assoc();
+					?>
 					<div class="msx">
-						<p class="msx-p1 "><a href="../pages/News.html">មកស្គាល់ បង្គន់ដ៏ល្បីបំផុតប្រចាំប្រទេសជប៉ុន ពោរពេញទៅដោយមច្ឆាជាតិពិតៗ ព័ន្ធជុំវិញ (មានវីដេអូ)</a></p>
+						<p class="msx-p1 "><a href="?article=<?php echo $row1['id'] ?>"><?php echo $row1['title'] ?></a></p>
 					</div>
 					<div class="row">
 						<div class="msx-img"></div>
@@ -85,7 +25,7 @@
 						<div class="dream">
 							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 xx" >
 								<div class="row">
-									<img src="../img/uu.jpg" class="img-responsive ll" alt="Image" width="100%">
+									<img src="./img/uu.jpg" class="img-responsive ll" alt="Image" width="100%">
 								</div>
 							</div>
 							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
@@ -95,11 +35,11 @@
 						<div class="dream">
 							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 xx" >
 								<div class="row">
-									<img src="../img/uu1.jpg" class="img-responsive ll" alt="Image" width="100%">
+									<img src="./img/uu1.jpg" class="img-responsive ll" alt="Image" width="100%">
 								</div>
 							</div>
 							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-								<a href="../pages/News.html" class="ll1">Ambient Mode ថ្មីរបស់ទូរទស្សន៍ Samsung QLED ពិតជាផ្តល់ឱ្យអ្នកលោក នូវសោភ័ណ្ឌភាពដ៏ប្រណិតសម្រាប់គេហដ្ឋាន!!</a>
+								<a href="./pages/News.html" class="ll1">Ambient Mode ថ្មីរបស់ទូរទស្សន៍ Samsung QLED ពិតជាផ្តល់ឱ្យអ្នកលោក នូវសោភ័ណ្ឌភាពដ៏ប្រណិតសម្រាប់គេហដ្ឋាន!!</a>
 							</div>
 						</div>
 					</div>
@@ -109,16 +49,16 @@
 				<div class="row">
 					<div class="bank" style="height: 300px;">
 						<div class="thumbnail" style="border:none;box-shadow: none;border-radius: 0px;">
-							<img src="../img/nico.jpg" class="img-responsive" alt="Image">
-							<a href="../pages/News.html" class="lx"><p style="text-align: center;">រញ្ជួយអ៊ីអនម៉ល ដោយសារតែការហ្សូមរបស់ Huawei P30 សេ៊រី និងលោក នីកូ!</p> </a>
+							<img src="./img/nico.jpg" class="img-responsive" alt="Image">
+							<a href="./pages/News.html" class="lx"><p style="text-align: center;">រញ្ជួយអ៊ីអនម៉ល ដោយសារតែការហ្សូមរបស់ Huawei P30 សេ៊រី និងលោក នីកូ!</p> </a>
 						</div>	
 					</div>
 				</div>
 				<div class="row" >
 					<div class="bank" style="height: 300px;">
 						<div class="thumbnail" style="border:none;box-shadow: none;border-radius: 0px;">
-							<img src="../img/gh2.jpg" class="img-responsive" alt="Image">
-							<a href="../pages/News.html" class="lx" >
+							<img src="./img/gh2.jpg" class="img-responsive" alt="Image">
+							<a href="./pages/News.html" class="lx" >
                             <p style="text-align: center;" class="john">ចិនគ្រោងប្រើបច្ចេកវិទ្យាស្កេនមុខ ដើម្បីហាមឃាត់ភ្ញៀវទេសចរណា ដែលគ្មានសណ្តាប់ធ្នាប់ ចូលទៅតំបន់កម្សាន្តធំៗ </p>                       </a>
 						</div>	
 					</div>
@@ -128,16 +68,16 @@
 				<div class="row">
 					<div class="bank" style="height: 300px;">
 						<div class="thumbnail" style="border:none;box-shadow: none;border-radius: 0px;">
-							<img src="../img/gh.jpg" class="img-responsive" alt="Image">
-							<a href="../pages/News.html" class="lx"><p style="text-align: center;">មកស្គាល់សាលាបណ្ដុះអ្នកជំនាញអាជីពផ្នែក Network និងមានឱកាសការងារដល់ក្រៅប្រទេស</p>
+							<img src="./img/gh.jpg" class="img-responsive" alt="Image">
+							<a href="./pages/News.html" class="lx"><p style="text-align: center;">មកស្គាល់សាលាបណ្ដុះអ្នកជំនាញអាជីពផ្នែក Network និងមានឱកាសការងារដល់ក្រៅប្រទេស</p>
 						</div>	
 					</div>
 				</div>
 				<div class="row" >
 					<div class="bank" style="height: 300px;">
 						<div class="thumbnail" style="border:none;box-shadow: none;border-radius: 0px;">
-							<img src="../img/gh3.jpg" class="img-responsive" alt="Image">
-							<a href="../pages/News.html" class="lx"><p style="text-align: center;">Tesla ​ត្រៀម​ដាក់​ឲ្យ​ប្រើ​សេវាកម្ម​តាក់ស៊ី​បើក​ស្វ័យប្រវត្តិ ជិះ ១,៦ គីឡូ​អស់មិនដល់ ៨០០ រៀល
+							<img src="./img/gh3.jpg" class="img-responsive" alt="Image">
+							<a href="./pages/News.html" class="lx"><p style="text-align: center;">Tesla ​ត្រៀម​ដាក់​ឲ្យ​ប្រើ​សេវាកម្ម​តាក់ស៊ី​បើក​ស្វ័យប្រវត្តិ ជិះ ១,៦ គីឡូ​អស់មិនដល់ ៨០០ រៀល
                           </p>
 						</div>	
 					</div>
@@ -341,66 +281,4 @@
 
 					
 
-	<div class="container-fluid footer1" >
-		<div class="container" >
-			<div class="row">
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
-					<div class="row">
-						<div class="com">
-							<p><i class="fa fa-commenting-o" aria-hidden="true"></i> COMMUNITY</p>
-						</div>
-						<div class="for1">
-							<a href="#" class="color">Forums</a>
-						</div>
-						<div class="for2">
-							<a href="#" class="color">Help</a>
-						</div>
-						<div class="for3">
-							<a href="#" class="color">Request</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<div class="row">
-						<div class="com">
-							<p><i class="fa fa-cloud" aria-hidden="true"></i> CONNECT</p>
-						</div>
-						<div class="for1">
-							<a href="#" class="color">Jerry</a>
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<div class="row">
-						<div class="com">
-							<p><i class="fa fa-info-circle" aria-hidden="true"></i> WEBSITE INFO</p>
-						</div>
-						<div class="for1">
-							<a href="../pages/aboutus.html" class="color">About Us</a>
-						</div>
-						<div class="for2">
-							<a href="#" class="color">Contact Us</a>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid l-f">
-		<div class="container">
-			<div class="row cc">
-				<p>© Copyright J11 News.<br>All Rights Reserved.</br></p>
-			</div>		
-		</div>
-	</div>
-
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/wow.js"></script>
-    <script>new WOW().init();</script>
-</body>
-
-</html>
+	
