@@ -42,7 +42,7 @@
                                     </div>
                                     <div id="navbar" class="navbar-collapse collapse">
                                           <ul class="nav navbar-nav" style="font-family: Koulen;font-size: 20px;">
-                                          <li ><a href="http://localhost/ppiuproject/j/">ព័ត៍មាន</a></li>
+                                          <li ><a href="/PPIU_Project/JerryJ11/">ព័ត៍មាន</a></li>
 								<?php
 									$result=$conn->query("SELECT * FROM tbl_cat");
 									while($row = $result->fetch_assoc()) {?>
